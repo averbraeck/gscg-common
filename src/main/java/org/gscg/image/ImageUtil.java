@@ -21,6 +21,12 @@ public final class ImageUtil
         // Utility class
     }
 
+    /**
+     * Send a http response for an image.
+     * @param response the servlet response
+     * @param image the bytes of the image
+     * @throws IOException when writing the image fails
+     */
     public static void makeResponse(final HttpServletResponse response, final byte[] image) throws IOException
     {
         response.reset();
@@ -42,6 +48,12 @@ public final class ImageUtil
         response.getOutputStream().write(image);
     }
 
+    /**
+     * Compare the image's magic bytes with the signature. 
+     * @param image the image bytes
+     * @param signature the signature bytes
+     * @return whether the magic bytes of the image correspond to the provided signature bytes 
+     */
     public static boolean checkMimeType(final byte[] image, final int... signature)
     {
         for (int i = 0; i < signature.length; i++)
